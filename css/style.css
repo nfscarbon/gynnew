@@ -2954,11 +2954,12 @@ a.sign-button:hover {
 ===========================================================*/
 .class-schedule {
   background: #000000 url(img/class-schedule.png) 0 0 no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
   background-attachment: fixed;
   padding: 60px 0px;
+  /* width: 100%; */
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+/* @media (min-width: 992px) and (max-width: 1199px) {
   .class-schedule {
     padding: 90px 0 0;
   }
@@ -2982,38 +2983,38 @@ a.sign-button:hover {
   .class-schedule {
     padding: 50px 0 0;
   }
-}
+} */
 .class-schedule .section-title h2 {
   color: #ffffff;
   margin-bottom: 60px;
   text-align: center;
 }
-.class-schedule-wrap {
-  background: #3EB549;
-  padding: 65px 50px;
-}
-.class-schedule-wrap ul.nav-tabs {
-  border: none;
-  margin-bottom: 45px;
-}
-.class-schedule-wrap .nav-tabs {
-  text-align: center;
-}
-.class-schedule-wrap .nav-tabs li {
-  display: inline-block;
-  float: inherit;
-  margin: 0;
-}
-.class-schedule-wrap .nav-tabs li a {
-  background: #dd4813;
-  border: none;
-  border-radius: 30px;
-  color: #ffffff;
-  margin-right: 10px;
-  margin-bottom: 5px;
-  padding: 12px 34px;
-}
-.class-schedule-wrap .nav-tabs li.active a {
+  /* .class-schedule-wrap {
+    background: #3EB549;
+    padding: 65px 50px;
+  }
+  .class-schedule-wrap ul.nav-tabs {
+    border: none;
+    margin-bottom: 45px;
+  }
+  .class-schedule-wrap .nav-tabs {
+    text-align: center;
+  }
+  .class-schedule-wrap .nav-tabs li {
+    display: inline-block;
+    float: inherit;
+    margin: 0;
+  }
+  .class-schedule-wrap .nav-tabs li a {
+    background: #dd4813;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 12px 34px;
+  } */
+/* .class-schedule-wrap .nav-tabs li.active a {
   background: #ffffff;
   color: #111111;
   border: none;
@@ -3063,11 +3064,11 @@ a.sign-button:hover {
   font-size: 15px;
   color: #666666;
   padding: 12px 20px;
-}
-.class-schedule-tab ul li:nth-child(4) a:hover {
+} */
+/* .class-schedule-tab ul li:nth-child(4) a:hover {
   background: #000000;
   color: #ffffff;
-}
+} */
 /*=============  End of Class schedule style  =============*/
 /*==========================================================
 =                  08. What clients say style              =
