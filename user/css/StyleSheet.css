@@ -818,7 +818,6 @@ th {
 .Ntfcton-listing-ul {
     margin: 0px;
     padding: 0px;
-    height: calc(100vh - 595px);
     overflow: auto;
 }
 .Ntfcton-listing-ul li {
