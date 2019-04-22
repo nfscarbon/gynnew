@@ -15,7 +15,18 @@ if($SubscriptionId)
 }
 
 //get All Members
-$members_query = "SELECT * FROM members WHERE MemberActiveStatus = 1"; 
+if($_SESSION['logged_user']['MemberType'] == 2){
+
+
+   $members_query = "SELECT * FROM members WHERE MemberId = ".$_SESSION['logged_user']['MemberId'];     
+
+}
+else
+{
+
+   $members_query = "SELECT * FROM members WHERE MemberActiveStatus = 1"; 
+}
+
 $members_queryresult = mysqli_query($db, $members_query);
 //$members_res = mysqli_fetch_assoc($members_queryresult);
 
@@ -44,10 +55,78 @@ $created            = date('Y-m-d H:i:s');
 
 
 // REGISTER USER
+
+
+if(isset($_GET['razorpay_payment_id'])){
+$id = isset($_GET['razorpay_payment_id']);    
+  
+
+
+
+$SlotId=$_SESSION['SlotId'];
+$MemberId=$_SESSION['MemberId'];
+$PlanID=$_SESSION['PlanID'];
+$DateStart=$_SESSION['DateStart'];
+$DateEnd=$_SESSION['DateEnd'];
+$Amount=$_SESSION['amount'];
+$status=1;
+$created = date('Y-m-d H:i:s');
+            $query = "INSERT INTO subscription (SlotId, MemberId, PlanID, DateStart, DateEnd, Amount, status, created) 
+            VALUES('$SlotId', '$MemberId', '$PlanID', '$DateStart', $DateEnd, $Amount, '$status', '$created')";
+        
+
+        $result = mysqli_query($db, $query);
+
+      /* echo "<script>console.log( 'Debug Objects: PlanPrice  $query ' );</script>"; */
+    
+
+        $_SESSION['success'] = "Subscription has been saved.";
+       // header('location: subscriptions.php');
+
+}
+
 if (isset($_POST['reg_subscription'])) 
 {
 
-    //var_dump($_POST);
+    if($_SESSION['logged_user']['MemberType'] == 2){
+        /**
+        Not admin
+        **/
+    
+
+        $plan_check_query = "SELECT * FROM plan WHERE PlanId = '".$_POST['PlanID']."'"; 
+        $result = mysqli_query($db, $plan_check_query);
+        $plan_res = mysqli_fetch_assoc($result);
+
+        $DateStart       = date('Y-m-d');
+        $DateEnd         = date('Y-m-d', strtotime($DateStart. ' + '.$plan_res['PlanDuration'].' days'));
+        $Amount          = $plan_res['PlanPrice'];
+
+      
+    
+       // receive all input values from the form
+    // $SubscriptionId  = mysqli_real_escape_string($db, $_POST['SubscriptionId']);
+    $SlotId          = mysqli_real_escape_string($db, $_POST['SlotId']);
+    $MemberId        = mysqli_real_escape_string($db, $_POST['MemberId']);
+    $PlanID          = mysqli_real_escape_string($db, $_POST['PlanID']);
+
+$_SESSION['amount']=$Amount;
+$_SESSION['SubscriptionId']=$SubscriptionId;
+$_SESSION['SlotId']=$SlotId;
+$_SESSION['MemberId']=$MemberId;
+$_SESSION['PlanID']=$PlanID;
+$_SESSION['DateStart']=$DateStart;
+$_SESSION['DateEnd']=$DateEnd;
+
+    $url = "payment/pay.php?Amount=".$Amount."&SlotId=".$SlotId;
+
+   header("location: $url");
+
+    }else{
+    
+    
+    
+   
 
 
     // receive all input values from the form
@@ -55,6 +134,10 @@ if (isset($_POST['reg_subscription']))
     $SlotId          = mysqli_real_escape_string($db, $_POST['SlotId']);
     $MemberId        = mysqli_real_escape_string($db, $_POST['MemberId']);
     $PlanID          = mysqli_real_escape_string($db, $_POST['PlanID']);
+
+
+
+
     // $DateStart       = mysqli_real_escape_string($db, $_POST['DateStart']);
     // $DateEnd         = mysqli_real_escape_string($db, $_POST['DateEnd']);
     // $Amount          = mysqli_real_escape_string($db, $_POST['Amount']);
@@ -100,10 +183,14 @@ if (isset($_POST['reg_subscription']))
             VALUES('$SlotId', '$MemberId', '$PlanID', '$DateStart', $DateEnd, $Amount, '$status', '$created')";
         }
 
-        mysqli_query($db, $query);
+        $result = mysqli_query($db, $query);
+
+      //  echo "<script>console.log( 'Debug Objects: PlanPrice " .  mysqli_fetch_assoc("SELECT LAST_INSERT_ID()"). "' );</script>"; 
+    
+
         $_SESSION['success'] = "Subscription has been saved.";
         header('location: subscriptions.php');
-    }
+    }}
 }
 ?>
 
@@ -164,27 +251,48 @@ if (isset($_POST['reg_subscription']))
                             <div class="control-group">
                                 <label for="textfield" class="control-label">PlanId :</label>
                                 <div class="controls">
-                                    <select name="PlanID" class="uneditable-input">
+                                    <select name="PlanID" class="uneditable-input" >
                                         <?php while ($plan_res = mysqli_fetch_assoc($plan_queryresult)) { ?>
-                                            <option value="<?php echo $plan_res['PlanId'] ?>" <?php echo ($plan_res['PlanId'] == $PlanID) ? 'selected' : '' ?>><?php echo $plan_res['PlanName'] ?></option>
+                                            
+                                            <option value="<?php echo $plan_res['PlanId'] ?>" 
+                                            
+                                             <?php echo ($plan_res['PlanId'] == $PlanID) ? 
+                                               'selected' : '' ?>>
+                                            <?php echo ($plan_res['PlanName'] ."  --- Price INR  ".$plan_res['PlanPrice']) ?>
+                                        
+                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="control-group">
-                                <label for="textfield" class="control-label">status :</label>
+                            
+                                
+
+                                    <?php if($_SESSION['logged_user']['MemberType'] == 1) { ?>
+                                    <div class="control-group">
+                                        <label for="textfield" class="control-label">status :</label>
                                 <div class="controls">
                                     <select name="status" class="uneditable-input">
                                         <option value="1" <?php echo ($status == 1) ? 'selected' : '' ?>>Active</option>
                                         <option value="0" <?php echo ($status == 0) ? 'selected' : '' ?>>De-Active</option>
                                     </select>
-                                </div>
-                            </div>
+                                     </div>
+                                     </div>
+                                    <?php } ?>
+                               
+                            
+
+
 
                             <?php if($_SESSION['logged_user']['MemberType'] == 1) { ?>
                                 <div class="control-group">
                                     <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            <?php } ?>
+                             <?php if($_SESSION['logged_user']['MemberType'] != 1) { ?>
+                                <div class="control-group">
+                                    <button type="pay" id="myclick" class="btn btn-success">Pay</button>
                                 </div>
                             <?php } ?>
                         </form>
@@ -201,6 +309,8 @@ if (isset($_POST['reg_subscription']))
         $(document).ready(function(){
             $('input, select, textarea').attr('readonly', true);
         })
+
+
     </script>
 <?php } ?>
 

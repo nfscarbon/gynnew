@@ -1203,7 +1203,7 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
     cursor: not-allowed;
     background-color: #eee;
 }
-.uneditable-input {height: 20px;
+.uneditable-input {height: 40px;
     padding: 4px 6px;
         font-size: 14px;
     line-height: 20px;
