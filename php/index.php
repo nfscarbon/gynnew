@@ -20,102 +20,18 @@
     <link href="css/owl.theme.default.css" rel="stylesheet" />
 
 
-    <style>
-        .css-only-modal-check {
-            pointer-events: auto;
-        }
-
-            .css-only-modal-check:checked ~ .css-only-modal {
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-        .css-only-modal {
-            width: 60%;
-            background: #FFF;
-            z-index: 1;
-            display: inline-block;
-            position: relative;
-            pointer-events: auto;
-            padding: 25px;
-            text-align: right;
-            border-radius: 4px;
-            white-space: normal;
-            display: inline-block;
-            vertical-align: middle;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-            .css-only-modal h2 {
-                text-align: center;
-            }
-
-            .css-only-modal p {
-                text-align: left;
-            }
-
-        .css-only-modal-close {
-            position: absolute;
-            top: -2px;
-            right: 5px;
-        }
-
-        .css-only-modal-check {
-            display: none;
-        }
-
-            .css-only-modal-check:checked ~ #screen-shade {
-                opacity: 0.5;
-                pointer-events: auto;
-            }
-
-        #screen-shade {
-            opacity: 0;
-            background: #000;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            pointer-events: none;
-            transition: opacity 0.8s;
-        }
-
-        .inverse {
-            color: DarkCyan;
-            background: White;
-        }
-
-        .grey {
-            color: White;
-            background: DimGrey;
-        }
-
-        .grey-light {
-            color: DimGrey;
-            background: White;
-        }
-    </style>
-
-
-
-
-
-
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
     <!-- Start wrapper -->
-    <div class="wrapper">
+    <div class="">
         <header class="main-header header-style1 stick" id="sticker">
             <!-- Start Header Top Area -->
             <div class="header-top-area">
                 <div class="container">
-                    <div class="row">
+                    <div class="">
                         <div class="div-box">
                             <div class="logo-area">
                                 <a href="index.php" title="Modern Fitness Gym">
@@ -141,37 +57,13 @@
             </div>
             <!-- End header Top Area -->
 
-            <!-- mobile-menu-area start -->
-            <div class="mobile-menu-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mobile-menu">
-                                <nav id="dropdown" style="display: block;">
-                                    <ul>
-                                        <li><a href="#about" title="About Modern Fitness Gym">About</a></li>
-                                        <li><a href="#classes" title="Featured Classes">Classes</a></li>
-                                        <li><a href="#schedule" title="Videos of Modern Fitness Gym">Videos</a></li>
-                                       
-                                        <li><a href="#price" title="Our Price">Price</a>
-
-                                        </li>
-                                       
-                                        
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- mobile-menu-area end -->
+           
         </header>
         <!-- End Header area -->
 
         <!-- Start slider area  -->
 
-        <div class="container-fluid d">
+        <div class="">
 
 
             <div id="myCarousel" class="carousel slide owl-carousel">
@@ -225,8 +117,7 @@
                 <div class="about-fitness-left">
                     <div class="about-left-img padding-space">
                         <img src="images/about-logo.png" alt="Modern Fitness Gym">
-                        <div class="overly">
-                        </div>
+                    
                     </div>
                 </div>
                 <div class="about-fitness-right padding-space">
@@ -243,7 +134,7 @@
         <!-- End About area -->
 
         <!-- Start feature classes area -->
-        <div class="feature-classes-area nav-on-hover" id="classes">
+        <div class="feature-classes-area" id="classes">
             <div class="container">
                 <div class="section-title">
                     <h2>Featured Classes</h2>
@@ -316,15 +207,15 @@
         </div>
         <!-- End feature product area -->
         <!-- Start being body builder area -->
-        <div class="being-body-builder  bg-secondary padding-top">
+        <div class="being-body-builder  ">
             <div class="container">
                 <div class="div-box">
-                    <div class="div-box-left">
-                        <div class="being-left-img">
+                    <div class="">
+                        <div class="">
                             <img src="images/being-builder.png" alt="being-builder">
                         </div>
                     </div>
-                    <div class="div-box-right">
+                    <div class="">
                         <div class="being-right-content">
                             <div class="being-content">
                                 <h2>WANT <span>TO BE</span></h2>
