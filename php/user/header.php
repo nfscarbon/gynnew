@@ -31,14 +31,17 @@
                                 </ul>
                             </li>
                             <li class="nav-small-cap m-t-10">--- <?php echo $_SESSION['logged_user']['MemberName'] ?></li>
+
                             <li><a href="index.php" class="waves-effect active"><i class="fa fa-tachometer mr5"></i><span class="hide-menu">Dashboard </span></a></li>
 
-                            <!-- // admin -->
-                            <?php if($_SESSION['logged_user']['MemberType'] == 1) { ?>
                                 <li><a href="subscriptions.php" class="waves-effect "><i class="fa fa-user"></i>
                                     <span class="hide-menu">Subscriptions </span></a></li>
                                 <li><a href="Payments.php" class="waves-effect "><i class="fa fa-usd mr5"></i><span class="hide-menu gap-payments">Payments <span class="fa arrow"></span></span></a>
-                                </li>
+                                </li>    
+                            <!-- // admin -->
+                            <?php if($_SESSION['logged_user']['MemberType'] == 1) { ?>
+                            
+                                
 
                                 <li><a href="plan.php" class="waves-effect "><i class="fa fa-envelope mr5"></i><span class="hide-menu">Plans </span></a>
                                 </li>

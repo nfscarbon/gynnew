@@ -1,10 +1,17 @@
 ﻿<?php include('header.php') ?>
+
+
+
+
 <?php 
 if (!isset($_SESSION['logged_user'])) 
 {
     $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
 }
+
+
+
 ?>
 
     <div class="adminbox-right" id="page-wrapper">
@@ -49,7 +56,12 @@ if (!isset($_SESSION['logged_user']))
                                 </thead>
                                 <tbody>
                                     <?php 
-                                    $check_query = "SELECT SubscriptionId, MemberId, SlotId, PlanID, DateStart, DateEnd, Amount, status, created FROM subscription"; 
+
+                                    $check_query = ''   ;
+                                    if($_SESSION['logged_user']['MemberId']!=1){
+                                    $check_query = "SELECT SubscriptionId, MemberId, SlotId, PlanID, DateStart, DateEnd, Amount, status, created FROM subscription where  MemberId = ".$_SESSION['logged_user']['MemberId']; }else{
+                                        $check_query = "SELECT SubscriptionId, MemberId, SlotId, PlanID, DateStart, DateEnd, Amount, status, created FROM subscription";
+                                    }
                                     $result = mysqli_query($db, $check_query); 
                                     ?>
                                         <?php //if (mysqli_num_rows($result) > 1)  { ?>
