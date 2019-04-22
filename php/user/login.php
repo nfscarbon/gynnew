@@ -19,19 +19,14 @@ if (isset($_SESSION['logged_user']))
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div class="preloader" style="display: none;">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-        </svg>
-    </div>
+   
 
     <div class="main-box" style="background: url(images/login-register.jpg)">
 
         <div class="form-box">
-            <div class="login">
                 <div class="white-box">
-                    <form id="loginform" method="post" class="ajax-form form-horizontal form-material" style="<?php echo (isset($_POST['reg_user'])) ? 'display: none' : ''  ?>">
-                        <div class="form-body">
+                    <form id="loginform" method="post" class="form-horizontal form-material" style="<?php echo (isset($_POST['reg_user'])) ? 'display: none' : ''  ?>">
+                        <div >
                             <a href="../index.php" class="text-center db">
                                 <img src="images/logo.png" height="60px" />
                             </a>
@@ -39,34 +34,34 @@ if (isset($_SESSION['logged_user']))
                             <?php include('errors.php'); ?>
                             
                             <input type="hidden" name="login_user" value="1">
-                            <div class="form-group m-t-40">
-                                <div class="col-xs-12">
+                            <div class="form-group">
+                                
                                     <input class="form-control" type="email" placeholder="Email" name="email" value="">
-                                </div>
+                                
                             </div>
                             <div class="form-group">
-                                <div class="col-xs-12">
+                               
                                     <input class="form-control" type="password" placeholder="Password" value="" name="password">
-                                </div>
+                               
                             </div>
                             
-                            <div class="form-group text-center m-t-20">
-                                <div class="col-xs-12">
-                                    <button type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light">Log In</button>
-                                </div>
+                            <div class="form-group text-center ">
+                              
+                                    <button type="submit" class="btn btn-info btn-block waves-effect">Log In</button>
+                                
                             </div>
 
 
 
                             <div class="form-group m-b-0">
-                                <div class="col-sm-12 text-center">
-                                    <p>Don't have an account? <a href="javascript:void(0);" id="signup" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                                <div class="text-center">
+                                    <p>Don't have an account? <a href="javascript:void(0);" id="signup" class=""><b>Sign Up</b></a></p>
                                 </div>
                             </div>
                         </div>
                     </form>
 
-                    <form id="registerform"  method="post" action="" class="ajax-form form-horizontal form-material" style="<?php echo (isset($_POST['reg_user'])) ? 'display: block' : ''  ?>">
+                    <form id="registerform"  method="post" action="" class="form-horizontal form-material" style="<?php echo (isset($_POST['reg_user'])) ? 'display: block' : ''  ?>">
 
                         <a href="../index.php" class="text-center db">
                             <img src="images/logo.png" height="60px" />
@@ -76,51 +71,39 @@ if (isset($_SESSION['logged_user']))
                             
                         <input type="hidden" name="reg_user" value="1">
                         <div class="form-group m-t-40">
-                            <div class="col-xs-12">
+                           
                                 <input class="form-control" type="text" placeholder="First Name" name="MemberName">
-                            </div>
+                           
                         </div>
                         <div class="form-group hide-display">
-                            <div class="col-xs-12">
+                           
                                 <input class="form-control" type="text" placeholder="Email" name="MemberEmailId">
-                            </div>
+                           
                         </div>
                         <div class="form-group hide-display">
-                            <div class="col-xs-12">
+                          
                                 <input class="form-control" type="number" maxlength="10" placeholder="Phone" name="MembePhone">
-                            </div>
+                            
                         </div>
                         <div class="form-group hide-display">
-                            <div class="col-xs-12">
+                           
                                 <input class="form-control" type="password" placeholder="Password" name="MemberPassword">
-                            </div>
+                           
                         </div>
                         <div class="form-group hide-display">
-                            <div class="col-xs-12">
+                          
                                 <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_MemberPassword">
-                            </div>
+                            
                         </div>
-                        <div class="form-group text-center m-t-20 hide-display">
-                            <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
-                            </div>
+                        <div class="form-group text-center">
+                           
+                                <button class="btn btn-info btn-block waves-effect" type="submit">Sign Up</button>
+                           
                         </div>
 
-
-
-
-
-
-
-
-                        <div class="form-group m-b-0">
-                            <div class="col-sm-12 text-center">
-                                <p>Already have an account? <a href="javascript:void(0);" id="signin" class="text-primary m-l-5"><b>Sign In</b></a></p>
-                            </div>
-                        </div>
                     </form>
                 </div>
-            </div>
+       
         </div>
 
 
